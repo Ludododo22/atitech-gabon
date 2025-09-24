@@ -1,45 +1,45 @@
 // netlify/functions/contact.js
 const { Resend } = require('resend');
 
-exports.handler = async (event, context) => {
-  // ✅ Vérifie la méthode
+exports.handler = async (event) => {
+  // Vérifie la méthode HTTP
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  // ✅ Initialise Resend DANS la fonction (accès garanti à process.env)
-  const resend = new Resend(process.env.RESEND_API_KEY);
-
   try {
-    const body = JSON.parse(event.body);
-    const { name, email, phone, service, message } = body;
+    // Parse les données du formulaire
+    const { name, email, phone, service, message } = JSON.parse(event.body);
 
+    // Validation basique
     if (!name || !email || !service || !message) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ success: false, error: 'Champs requis manquants' })
+        body: JSON.stringify({ success: false, error: 'Tous les champs requis ne sont pas remplis.' })
       };
     }
 
-    // 1. Email à toi
+    // Initialise Resend avec la clé d'API (fournie par Netlify)
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
+    // 1. Envoie le message à toi
     await resend.emails.send({
-      from: 'Contact <onboarding@resend.dev>', // ✅ domaine vérifié par Resend
+      from: 'Contact <onboarding@resend.dev>', // ✅ domaine officiel Resend
       to: 'contact.atitech@gmail.com',
-      subject: `Nouveau message de ${name} - ${service}`,
+      subject: `📩 Nouveau message de ${name} - ${service}`,
       html: `
-        <h3>Nouveau message via le site ATI Tech Gabon</h3>
         <p><strong>Nom :</strong> ${name}</p>
         <p><strong>Email :</strong> ${email}</p>
         <p><strong>Téléphone :</strong> ${phone || 'Non fourni'}</p>
-        <p><strong>Service demandé :</strong> ${service}</p>
+        <p><strong>Service :</strong> ${service}</p>
         <p><strong>Message :</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
       `
     });
 
-    // 2. Accusé au client
+    // 2. Envoie l'accusé au client
     await resend.emails.send({
-      from: 'ATI Tech Gabon <onboarding@resend.dev>', // ✅ même domaine vérifié
+      from: 'ATI Tech Gabon <onboarding@resend.dev>', // ✅ même domaine fiable
       to: email,
       subject: '✅ Merci pour votre message – ATI Tech Gabon',
       html: `
@@ -47,16 +47,12 @@ exports.handler = async (event, context) => {
           <h2 style="color: #0066ff;">Bonjour ${name},</h2>
           <p>Merci pour votre message concernant <strong>${service}</strong>.</p>
           <p>Nous avons bien reçu votre demande et vous répondrons dans les plus brefs délais.</p>
-          <p>Cordialement,<br>
-          <strong>L’équipe ATI Tech Gabon</strong></p>
-          <hr style="margin: 20px 0;">
-          <p style="font-size: 0.9em; color: #666;">
-            Ce message a été envoyé automatiquement. Merci de ne pas y répondre.
-          </p>
+          <p>Cordialement,<br><strong>L’équipe ATI Tech Gabon</strong></p>
         </div>
       `
     });
 
+    // Réponse succès
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
@@ -64,7 +60,7 @@ exports.handler = async (event, context) => {
     };
 
   } catch (error) {
-    console.error('Erreur Resend:', error);
+    console.error('❌ Erreur Resend:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ success: false, error: error.message || 'Erreur inconnue' })
