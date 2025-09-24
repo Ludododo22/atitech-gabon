@@ -43,4 +43,4 @@ atitech-gabon/
 
 ---
 
-Développé avec ❤️ pour les professionnels de l’IT au Gabon.
+Développé avec ❤️ pour les professionnels de l’IT au Gabon par A. Ludocic
