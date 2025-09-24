@@ -1,18 +1,19 @@
 // netlify/functions/contact.js
 const { Resend } = require('resend');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 exports.handler = async (event, context) => {
+  // ✅ Vérifie la méthode
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
+
+  // ✅ Initialise Resend DANS la fonction (accès garanti à process.env)
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     const body = JSON.parse(event.body);
     const { name, email, phone, service, message } = body;
 
-    // Validation basique
     if (!name || !email || !service || !message) {
       return {
         statusCode: 400,
@@ -22,7 +23,7 @@ exports.handler = async (event, context) => {
 
     // 1. Email à toi
     await resend.emails.send({
-      from: 'Contact <contact@atitech-gabon.resend.dev>',
+      from: 'Contact <onboarding@resend.dev>', // ✅ domaine vérifié par Resend
       to: 'contact.atitech@gmail.com',
       subject: `Nouveau message de ${name} - ${service}`,
       html: `
@@ -36,9 +37,9 @@ exports.handler = async (event, context) => {
       `
     });
 
-    // 2. Accusé de réception au client
+    // 2. Accusé au client
     await resend.emails.send({
-      from: 'ATI Tech Gabon <no-reply@atitech-gabon.resend.dev>',
+      from: 'ATI Tech Gabon <onboarding@resend.dev>', // ✅ même domaine vérifié
       to: email,
       subject: '✅ Merci pour votre message – ATI Tech Gabon',
       html: `
