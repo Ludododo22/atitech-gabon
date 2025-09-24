@@ -1,0 +1,10 @@
+{
+  "name": "atitech-gabon",
+  "version": "1.0.0",
+  "description": "Site vitrine ATI Tech Gabon avec formulaire Resend",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "resend": "^3.2.0"
+  }
+}
