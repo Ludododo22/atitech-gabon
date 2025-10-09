@@ -172,29 +172,52 @@
   }
   </script>
 
-  <!-- Structured Data -->
+ <!-- Structured Data - WebSite -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "ATI TECH GABON",
-      "image": "https://res.cloudinary.com/dheprfudi/image/upload/v1749348126/logo-atitech_A_lractu.png",
-      "description": "Solutions informatiques et formations digitales professionnelles au Gabon.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Rue de la Technologie, Quartier Angodje",
-        "addressLocality": "Libreville",
-        "addressCountry": "GA"
-      },
-      "telephone": "+241 74 46 68 62",
-      "openingHours": "Mo-Fr 08:00-18:00, Sa 09:00-13:00",
-      "priceRange": "FCFA",
-      "sameAs": [
-        "https://facebook.com/atitechgabon",
-        "https://atitech.netlify.app",
-        "https://wa.me/24162059836"
-      ]
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://atitech.netlify.app/#website",
+    "url": "https://atitech.netlify.app/",
+    "name": "ATI Tech Gabon",
+    "description": "Solutions IT Professionnelles au Gabon",
+    "publisher": {
+      "@id": "https://atitech.netlify.app/#organization"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://atitech.netlify.app/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
+  }
+  </script>
+  
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://atitech.netlify.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://atitech.netlify.app/#services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Contact",
+        "item": "https://atitech.netlify.app/#contact"
+      }
+    ]
+  }
   </script>
 </head>
 
