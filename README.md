@@ -39,7 +39,7 @@ atitech-gabon/
    - **Value**: `re_...`
 3. Lier le dépôt GitHub à Netlify → déploiement automatique
 
-✅ Site live : [https://atitech-gabon.netlify.app](https://atitech-gabon.netlify.app)
+✅ Site live : [https://atitech-gabon.netlify.app](https://atitech.netlify.app)
 
 ---
 
