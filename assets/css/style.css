@@ -634,8 +634,8 @@ body {
 
 .about-icon {
   flex-shrink: 0;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -671,7 +671,7 @@ body {
 }
 
 .image-container img {
-  width: 100%;
+  width: 90%;
   height: auto;
   display: block;
 }

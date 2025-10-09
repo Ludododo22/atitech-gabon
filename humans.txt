@@ -1,0 +1,29 @@
+# humanstxt.org/
+
+/* ÉQUIPE */
+  Entreprise: ATI Tech Gabon
+  Site web: https://atitech.netlify.app
+  Localisation: Libreville, Gabon
+  Contact: contact.atitech@gmail.com
+  Téléphone: +241 74 46 68 62
+
+/* REMERCIEMENTS */
+  Nos clients et partenaires pour leur confiance
+
+/* SITE */
+  Dernière mise à jour: 2024/01/15
+  Langues: Français
+  Doctype: HTML5
+  IDE: Visual Studio Code
+  Technologies: HTML5, CSS3, JavaScript ES6+
+  Frameworks: Vanilla JS
+  Hébergement: Netlify
+  Standards: W3C, WCAG 2.1, Schema.org
+
+/* SERVICES */
+  - Développement Web
+  - Applications Mobile
+  - Maintenance IT
+  - Formation Professionnelle
+  - Installation Système
+  - Archivage Numérique

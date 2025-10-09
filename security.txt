@@ -1,0 +1,19 @@
+# Security Policy - ATI Tech Gabon
+# Ce fichier doit être placé dans /.well-known/security.txt
+
+Contact: mailto:contact.atitech@gmail.com
+Contact: tel:+241-74-46-68-62
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: fr, en
+Canonical: https://atitech.netlify.app/.well-known/security.txt
+Policy: https://atitech.netlify.app/security-policy
+
+# Si vous découvrez une faille de sécurité, veuillez nous contacter
+# de manière responsable via les coordonnées ci-dessus.
+# 
+# Nous nous engageons à :
+# - Accuser réception de votre rapport dans les 48 heures
+# - Vous tenir informé de nos progrès
+# - Reconnaître votre contribution si vous le souhaitez
+#
+# Merci de nous aider à maintenir la sécurité de nos services.
